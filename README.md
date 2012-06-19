@@ -1,7 +1,7 @@
-Side-Navigation
+SideNavigation
 ===============
 
-Implementation of "SIde Navigation" or "Fly-in app menu" pattern for Android (based on Google+ app).
+Implementation of "SIde Navigation" or "Fly-in app menu" pattern for Android (based on Google+ app and RibbonMenu library).
 
 ![Example Image][1]![Example Image][2]
 
