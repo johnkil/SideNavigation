@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/side_navigation_menu_item1"
+        android:icon="@drawable/ic_android1"
+        android:title="Title1"/>
+    <item
+        android:id="@+id/side_navigation_menu_item2"
+        android:icon="@drawable/ic_android2"
+        android:title="Title2"/>
+    <item
+        android:id="@+id/side_navigation_menu_item3"
+        android:icon="@drawable/ic_android3"
+        android:title="Title3"/>
+    <item
+        android:id="@+id/side_navigation_menu_item4"
+        android:icon="@drawable/ic_android4"
+        android:title="Title4"/>
+    <item
+        android:id="@+id/side_navigation_menu_item5"
+        android:icon="@drawable/ic_android5"
+        android:title="Title5"/>
+
+</menu>

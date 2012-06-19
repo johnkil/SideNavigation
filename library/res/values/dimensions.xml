@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="side_navigation_width">200dp</dimen>
+    
+    <dimen name="side_navigation_item_padding_topbottom">12dp</dimen>
+    <dimen name="side_navigation_item_padding_leftright">8dp</dimen>
+    
+    <dimen name="side_navigation_item_image_height">24dp</dimen>
+    <dimen name="side_navigation_item_image_width">24dp</dimen>
+    <dimen name="side_navigation_item_image_padding">2dp</dimen>
+    
+    <dimen name="side_navigation_item_text_size">18sp</dimen>
+    <dimen name="side_navigation_item_text_padding_left">10dp</dimen>
+
+</resources>
