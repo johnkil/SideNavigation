@@ -76,7 +76,7 @@ public class SideNavigationView extends LinearLayout {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if (callback != null) {
-					callback.RibbonMenuItemClick(menuItems.get(position).id);
+					callback.onSideNavigationItemClick(menuItems.get(position).id);
 				}
 				hideMenu();
 			}

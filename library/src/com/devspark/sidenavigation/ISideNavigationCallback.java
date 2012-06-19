@@ -8,9 +8,9 @@ package com.devspark.sidenavigation;
 public interface ISideNavigationCallback {
 
 	/**
-	 * Validation clicking on the list item.
-	 * @param itemId id of selected list item
+	 * Validation clicking on side navigation item.
+	 * @param itemId id of selected item
 	 */
-	public void RibbonMenuItemClick(int itemId);
+	public void onSideNavigationItemClick(int itemId);
 
 }

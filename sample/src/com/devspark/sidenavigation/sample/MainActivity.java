@@ -41,7 +41,7 @@ public class MainActivity extends Activity implements ISideNavigationCallback {
 	}
 
 	@Override
-	public void RibbonMenuItemClick(int itemId) {
+	public void onSideNavigationItemClick(int itemId) {
 		// TODO Auto-generated method stub
 		
 	}
