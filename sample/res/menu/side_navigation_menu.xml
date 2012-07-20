@@ -4,22 +4,22 @@
     <item
         android:id="@+id/side_navigation_menu_item1"
         android:icon="@drawable/ic_android1"
-        android:title="Title1"/>
+        android:title="@string/title1"/>
     <item
         android:id="@+id/side_navigation_menu_item2"
         android:icon="@drawable/ic_android2"
-        android:title="Title2"/>
+        android:title="@string/title2"/>
     <item
         android:id="@+id/side_navigation_menu_item3"
         android:icon="@drawable/ic_android3"
-        android:title="Title3"/>
+        android:title="@string/title3"/>
     <item
         android:id="@+id/side_navigation_menu_item4"
         android:icon="@drawable/ic_android4"
-        android:title="Title4"/>
+        android:title="@string/title4"/>
     <item
         android:id="@+id/side_navigation_menu_item5"
         android:icon="@drawable/ic_android5"
-        android:title="Title5"/>
+        android:title="@string/title5"/>
 
 </menu>
