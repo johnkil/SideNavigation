@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SideNavigationSample</string>
+    <string name="app_name">SideNavigation Sample</string>
     
     <string name="title1">Title1</string>
     <string name="title2">Title2</string>
