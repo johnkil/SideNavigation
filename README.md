@@ -30,9 +30,15 @@ The source code is available in this repository.
 Compatibility
 -------------
 
-This library is compatible from API 11 (Android 3.0).
+This library is compatible from API 4 (Android 1.6).
 
-To use the library on early versions of Android is necessary to use the library [ActionBarSherlock](https://github.com/JakeWharton/ActionBarSherlock)
+Installation
+------------
+
+The sample project requires:
+
+* The library project
+* [ActionBarSherlock](https://github.com/JakeWharton/ActionBarSherlock)
 
 Usage
 -----
