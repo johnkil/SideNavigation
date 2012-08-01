@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>SideNavigation by johnkil</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>SideNavigation</h1>
+        <h2>Implementation of &quot;SIde Navigation&quot; or &quot;Fly-in app menu&quot; pattern for Android (based on Google+ app)</h2>
+        <a href="https://github.com/johnkil/SideNavigation" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>Android SideNavigation Library</h1>
+
+<p>Implementation of "Side Navigation" or "Fly-in app menu" pattern for Android (based on Google+ app).</p>
+
+<h2>Description</h2>
+
+<p>The Google+ app slides the navigation on top of the UI while the others move the UI to the side. 
+Google+ also has the up caret icon and the action bar present when the menu is opened while other apps don't.</p>
+
+<p>There was a interesting discussion about this pattern in the blog's Google+ page some time ago. 
+You can find the post &amp; discussion here: <a href="https://plus.google.com/115177579026138386092/posts/AvXiTF7LqDK">Google+</a>.</p>
+
+<h2>Sample</h2>
+
+<p>A sample application is available on Google Play:</p>
+
+<p><a href="http://play.google.com/store/apps/details?id=com.devspark.sidenavigation.sample">
+  <img alt="Get it on Google Play" src="http://www.android.com/images/brand/get_it_on_play_logo_small.png"></a></p>
+
+<p><img src="http://i45.tinypic.com/f8jzn.png" alt="Example Image"></p>
+
+<p>The source code is available in this repository.</p>
+
+<h2>Compatibility</h2>
+
+<p>This library is compatible from API 4 (Android 1.6).</p>
+
+<h2>Installation</h2>
+
+<p>The sample project requires:</p>
+
+<ul>
+<li>The library project</li>
+<li><a href="https://github.com/JakeWharton/ActionBarSherlock">ActionBarSherlock</a></li>
+</ul><h2>Usage</h2>
+
+<p>To display the item you need the following code:</p>
+
+<ul>
+<li>Add SideNavigationView to the end of the layout. Example:</li>
+</ul><div class="highlight"><pre><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">android:orientation=</span><span class="s">"vertical"</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;ImageView</span>
+        <span class="na">android:id=</span><span class="s">"@android:id/icon"</span>
+        <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_centerInParent=</span><span class="s">"true"</span>
+        <span class="na">android:src=</span><span class="s">"@drawable/ic_android_logo"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;com.devspark.sidenavigation.SideNavigationView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/side_navigation_view"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/RelativeLayout&gt;</span>
+</pre></div>
+
+<ul>
+<li>Create '.xml' description of the menu for the sideNavigationView. Example:</li>
+</ul><div class="highlight"><pre><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;menu</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;item</span>
+        <span class="na">android:id=</span><span class="s">"@+id/side_navigation_menu_item1"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/ic_android1"</span>
+        <span class="na">android:title=</span><span class="s">"@string/title1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;item</span>
+        <span class="na">android:id=</span><span class="s">"@+id/side_navigation_menu_item2"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/ic_android2"</span>
+        <span class="na">android:title=</span><span class="s">"@string/title2"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;item</span>
+        <span class="na">android:id=</span><span class="s">"@+id/side_navigation_menu_item3"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/ic_android3"</span>
+        <span class="na">android:title=</span><span class="s">"@string/title3"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;item</span>
+        <span class="na">android:id=</span><span class="s">"@+id/side_navigation_menu_item4"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/ic_android4"</span>
+        <span class="na">android:title=</span><span class="s">"@string/title4"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;item</span>
+        <span class="na">android:id=</span><span class="s">"@+id/side_navigation_menu_item5"</span>
+        <span class="na">android:icon=</span><span class="s">"@drawable/ic_android5"</span>
+        <span class="na">android:title=</span><span class="s">"@string/title5"</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/menu&gt;</span>
+</pre></div>
+
+<ul>
+<li>Set home should be displayed as an "up" and initialize the sideNavigationView:</li>
+</ul><div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+    <span class="c1">// other code</span>
+
+    <span class="n">sideNavigationView</span> <span class="o">=</span> <span class="o">(</span><span class="n">SideNavigationView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">side_navigation_view</span><span class="o">);</span>
+    <span class="n">sideNavigationView</span><span class="o">.</span><span class="na">setMenuItems</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">menu</span><span class="o">.</span><span class="na">side_navigation_menu</span><span class="o">);</span>
+    <span class="n">sideNavigationView</span><span class="o">.</span><span class="na">setMenuClickCallback</span><span class="o">(</span><span class="cm">/*ISideNavigationCallback*/</span><span class="o">);</span>
+
+    <span class="n">getActionBar</span><span class="o">().</span><span class="na">setDisplayHomeAsUpEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+<ul>
+<li>Override onOptionsItemSelected() method for show/hide teh sideNavigationView:</li>
+</ul><div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="n">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">switch</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getItemId</span><span class="o">())</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">home</span><span class="o">:</span>
+        <span class="n">sideNavigationView</span><span class="o">.</span><span class="na">toggleMenu</span><span class="o">();</span>
+        <span class="k">break</span><span class="o">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onOptionsItemSelected</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+
+<ul>
+<li>Implementation of ISideNavigationCallback:</li>
+</ul><div class="highlight"><pre><span class="n">ISideNavigationCallback</span> <span class="n">sideNavigationCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ISideNavigationCallback</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSideNavigationItemClick</span><span class="o">(</span><span class="kt">int</span> <span class="n">itemId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Validation clicking on side navigation item</span>
+    <span class="o">}</span>
+<span class="o">};</span>
+</pre></div>
+
+<h2>Developed By</h2>
+
+<ul>
+<li>Evgeny Shishkin - <a href="mailto:johnkil78@gmail.com">johnkil78@gmail.com</a>
+</li>
+</ul><h2>License</h2>
+
+<pre><code>Copyright 2012 Evgeny Shishkin
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/johnkil/SideNavigation/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/johnkil/SideNavigation/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/johnkil/SideNavigation"></a> is maintained by <a href="https://github.com/johnkil">johnkil</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
