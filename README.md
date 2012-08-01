@@ -48,6 +48,7 @@ To display the item you need the following code:
 * Add SideNavigationView to the end of the layout. Example:
 
 ``` xml
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -66,6 +67,36 @@ To display the item you need the following code:
         android:layout_height="match_parent" />
 
 </RelativeLayout>
+```
+
+* Create '.xml' description of the menu for the sideNavigationView. Example:
+
+``` xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/side_navigation_menu_item1"
+        android:icon="@drawable/ic_android1"
+        android:title="@string/title1"/>
+    <item
+        android:id="@+id/side_navigation_menu_item2"
+        android:icon="@drawable/ic_android2"
+        android:title="@string/title2"/>
+    <item
+        android:id="@+id/side_navigation_menu_item3"
+        android:icon="@drawable/ic_android3"
+        android:title="@string/title3"/>
+    <item
+        android:id="@+id/side_navigation_menu_item4"
+        android:icon="@drawable/ic_android4"
+        android:title="@string/title4"/>
+    <item
+        android:id="@+id/side_navigation_menu_item5"
+        android:icon="@drawable/ic_android5"
+        android:title="@string/title5"/>
+
+</menu>
 ```
 
 * Set home should be displayed as an "up" and initialize the sideNavigationView:
