@@ -165,4 +165,4 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
-[1]: http://i49.tinypic.com/2gtukic.png
+[1]: http://i45.tinypic.com/f8jzn.png
