@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
+ * View of displaying side navigation.
  * 
  * @author e.shishkin
  * 
@@ -33,36 +34,42 @@ public class SideNavigationView extends LinearLayout {
 	private View outsideView;
 
 	private ISideNavigationCallback callback;
+	private ArrayList<SideNavigationItem> menuItems;
 
-	private static ArrayList<SideNavigationItem> menuItems;
-
+	/**
+	 * Constructor of {@link SideNavigationView}.
+	 * @param context
+	 */
 	public SideNavigationView(Context context) {
 		super(context);
 		load();
 	}
 
+	/**
+	 * Constructor of {@link SideNavigationView}.
+	 * @param context
+	 * @param attrs
+	 */
 	public SideNavigationView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		load();
 	}
 
+	/**
+	 * Loading of side navigation view.
+	 */
 	private void load() {
 		if (isInEditMode()) {
 			return;
 		}
-		inflateLayout();
-		initUi();
+		initView();
 	}
 
-	private void inflateLayout() {
-		try {
-			LayoutInflater.from(getContext()).inflate(R.layout.side_navigation, this, true);
-		} catch (Exception e) {
-			Log.w(LOG_TAG, e);
-		}
-	}
-
-	private void initUi() {
+	/**
+	 * Initialization layout of side menu.
+	 */
+	private void initView() {
+		LayoutInflater.from(getContext()).inflate(R.layout.side_navigation, this, true);
 		navigationMenu = (LinearLayout) findViewById(R.id.side_navigation_menu);
 		listView = (ListView) findViewById(R.id.side_navigation_listview);
 		outsideView = (View) findViewById(R.id.side_navigation_outside_view);
@@ -76,28 +83,42 @@ public class SideNavigationView extends LinearLayout {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if (callback != null) {
-					callback.onSideNavigationItemClick(menuItems.get(position).id);
+					callback.onSideNavigationItemClick(menuItems.get(position).getId());
 				}
 				hideMenu();
 			}
 		});
 	}
 
+	/**
+	 * Setup of {@link ISideNavigationCallback} for callback of item click.
+	 * @param callback
+	 */
 	public void setMenuClickCallback(ISideNavigationCallback callback) {
 		this.callback = callback;
 	}
 
+	/**
+	 * Setup of side menu items.
+	 * @param menu - resource ID
+	 */
 	public void setMenuItems(int menu) {
 		parseXml(menu);
 		if (menuItems != null && menuItems.size() > 0) {
-			listView.setAdapter(new Adapter());
+			listView.setAdapter(new SideNavigationAdapter());
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public void setBackgroundResource(int resource) {
 		listView.setBackgroundResource(resource);
 	}
 
+	/**
+	 * Show side navigation menu.
+	 */
 	public void showMenu() {
 		outsideView.setVisibility(View.VISIBLE);
 		outsideView.startAnimation(AnimationUtils.loadAnimation(getContext(),
@@ -107,6 +128,9 @@ public class SideNavigationView extends LinearLayout {
 				R.anim.side_navigation_in_from_left));
 	}
 
+	/**
+	 * Hide side navigation menu.
+	 */
 	public void hideMenu() {
 		outsideView.setVisibility(View.GONE);
 		outsideView.startAnimation(AnimationUtils.loadAnimation(getContext(),
@@ -116,16 +140,28 @@ public class SideNavigationView extends LinearLayout {
 				R.anim.side_navigation_out_to_left));
 	}
 
+	/**
+	 * Show/Hide side navigation menu depending on visibility.
+	 */
 	public void toggleMenu() {
-		if (outsideView.getVisibility() == View.GONE) {
-			showMenu();
-		} else {
+		if (isShown()) {
 			hideMenu();
+		} else {
+			showMenu();
 		}
 	}
+	
+	@Override
+	public boolean isShown() {
+		return navigationMenu.isShown();
+	}
 
+	/**
+	 * Parse XML describe menu.
+	 * @param menu - resource ID
+	 */
 	private void parseXml(int menu) {
-		menuItems = new ArrayList<SideNavigationView.SideNavigationItem>();
+		menuItems = new ArrayList<SideNavigationItem>();
 		try {
 			XmlResourceParser xrp = getResources().getXml(menu);
 			xrp.next();
@@ -144,9 +180,9 @@ public class SideNavigationView extends LinearLayout {
 								"http://schemas.android.com/apk/res/android",
 								"id");
 						SideNavigationItem item = new SideNavigationItem();
-						item.id = Integer.valueOf(resId.replace("@", ""));
-						item.text = resourceIdToString(textId);
-						item.icon = Integer.valueOf(iconId.replace("@", ""));
+						item.setId(Integer.valueOf(resId.replace("@", "")));
+						item.setText(resourceIdToString(textId));
+						item.setIcon(Integer.valueOf(iconId.replace("@", "")));
 						menuItems.add(item);
 					}
 				}
@@ -157,25 +193,24 @@ public class SideNavigationView extends LinearLayout {
 		}
 	}
 
-	private String resourceIdToString(String text) {
-		if (!text.contains("@")) {
-			return text;
+	/**
+	 * Convert resource ID to String.
+	 * @param text
+	 * @return
+	 */
+	private String resourceIdToString(String resId) {
+		if (!resId.contains("@")) {
+			return resId;
 		} else {
-			String id = text.replace("@", "");
+			String id = resId.replace("@", "");
 			return getResources().getString(Integer.valueOf(id));
 		}
 	}
 
-	class SideNavigationItem {
-		int id;
-		String text;
-		int icon;
-	}
-
-	private class Adapter extends BaseAdapter {
+	private class SideNavigationAdapter extends BaseAdapter {
 		private LayoutInflater inflater;
 
-		public Adapter() {
+		public SideNavigationAdapter() {
 			inflater = LayoutInflater.from(getContext());
 		}
 
@@ -200,16 +235,14 @@ public class SideNavigationView extends LinearLayout {
 			if (convertView == null) {
 				convertView = inflater.inflate(R.layout.side_navigation_item, null);
 				holder = new ViewHolder();
-				holder.image = (ImageView) convertView
-						.findViewById(R.id.side_navigation_item_icon);
-				holder.text = (TextView) convertView
-						.findViewById(R.id.side_navigation_item_text);
+				holder.image = (ImageView) convertView.findViewById(R.id.side_navigation_item_icon);
+				holder.text = (TextView) convertView.findViewById(R.id.side_navigation_item_text);
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			holder.image.setImageResource(menuItems.get(position).icon);
-			holder.text.setText(menuItems.get(position).text);
+			holder.image.setImageResource(menuItems.get(position).getIcon());
+			holder.text.setText(menuItems.get(position).getText());
 			return convertView;
 		}
 

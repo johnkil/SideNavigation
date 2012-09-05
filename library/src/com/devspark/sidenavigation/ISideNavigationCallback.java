@@ -1,6 +1,7 @@
 package com.devspark.sidenavigation;
 
 /**
+ * Callback interface for {@link SideNavigationView}.
  * 
  * @author e.shishkin
  *

@@ -78,5 +78,15 @@ public class MainActivity extends SherlockActivity implements
 		}
 
 	}
+	
+	@Override
+	public void onBackPressed() {
+		// hide menu if it shown
+		if (sideNavigationView.isShown()) {
+			sideNavigationView.hideMenu();
+		} else {
+			super.onBackPressed();
+		}
+	}
 
 }
