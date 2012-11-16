@@ -6,3 +6,9 @@ sample/.classpath
 sample/.project
 sample/bin/
 sample/gen/
+sample.net/bin/
+sample.net/obj/
+ActionBarSherlock/bin/
+ActionBarSherlock/obj/
+_ReSharper.sample.net
+*.suo
