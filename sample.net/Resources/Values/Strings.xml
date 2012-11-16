@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Mono SideNavigation Sample</string>
+    
+    <string name="title1">Title1</string>
+    <string name="title2">Title2</string>
+    <string name="title3">Title3</string>
+    <string name="title4">Title4</string>
+    <string name="title5">Title5</string>
+    
+    <string name="image_desc">Image</string>
+
+</resources>
