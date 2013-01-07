@@ -144,6 +144,15 @@ ISideNavigationCallback sideNavigationCallback = new ISideNavigationCallback() {
 };
 ```
 
+Contribution
+------------
+
+Please fork [dev](https://github.com/johnkil/SideNavigation/tree/dev) repository and contribute back using [pull requests](https://github.com/johnkil/SideNavigation/pulls).
+
+Contributors are recommended to follow the Android [Code Style Guidelines](http://source.android.com/source/code-style.html).
+
+Any contributions, large or small, major features, bug fixes, additional language translations, unit/integration tests are welcomed and appreciated but will be thoroughly reviewed and discussed.
+
 Developed By
 ------------
 * Evgeny Shishkin - <johnkil78@gmail.com>
