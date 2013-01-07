@@ -8,32 +8,34 @@ package com.devspark.sidenavigation;
  */
 class SideNavigationItem {
 
-	private int id;
-	private int icon;
-	private String text;
+    public static int DEFAULT_ICON_VALUE = -1;
 
-	public int getId() {
-		return id;
-	}
+    private int id;
+    private String text;
+    private int icon = DEFAULT_ICON_VALUE;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public int getIcon() {
-		return icon;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setIcon(int icon) {
-		this.icon = icon;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
 
 }
