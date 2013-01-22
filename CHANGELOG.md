@@ -2,10 +2,16 @@ Change Log
 ==========
 
 
-Version 1.1.1 *(In Development)*
+Version 1.3.0 *(In Development)*
 --------------------------------
 
  * ...
+
+
+Version 1.2.0 *(2013-01-23)*
+--------------------------------
+
+ * Support open the menu on the right.
 
 
 Version 1.1.0 *(2013-01-07)*
