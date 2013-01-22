@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- SideNavigation Mode submenu -->
+    <item
+        android:id="@+id/mode"
+        android:title="@string/mode">
+        <menu>
+            <group
+                android:id="@+id/mode_group"
+                android:checkableBehavior="single" >
+                <item
+                    android:id="@+id/mode_left"
+                    android:checked="true"
+                    android:title="@string/mode_left"/>
+                <item
+                    android:id="@+id/mode_right"
+                    android:title="@string/mode_right"/>
+            </group>
+        </menu>
+    </item>
+
+</menu>
