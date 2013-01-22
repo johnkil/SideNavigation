@@ -23,7 +23,7 @@ A sample application is available on Google Play:
        src="http://www.android.com/images/brand/get_it_on_play_logo_small.png" />
 </a>
 
-![Example Image][1]
+![Example Image][1] ![Example Image][2]
 
 The source code is available in this repository.
 
@@ -111,6 +111,7 @@ protected void onCreate(Bundle savedInstanceState) {
     sideNavigationView = (SideNavigationView) findViewById(R.id.side_navigation_view);
     sideNavigationView.setMenuItems(R.menu.side_navigation_menu);
 	sideNavigationView.setMenuClickCallback(/*ISideNavigationCallback*/);
+	sideNavigationView.setMode(/*SideNavigationView.Mode*/);
         
     getActionBar().setDisplayHomeAsUpEnabled(true);
 }
@@ -175,3 +176,4 @@ License
     limitations under the License.
 
 [1]: http://i45.tinypic.com/f8jzn.png
+[2]: http://i48.tinypic.com/2naid6d.png
