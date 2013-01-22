@@ -35,6 +35,11 @@ public class SideNavigationView extends LinearLayout {
 
     private ISideNavigationCallback callback;
     private ArrayList<SideNavigationItem> menuItems;
+    private Mode mMode = Mode.LEFT;
+
+    public static enum Mode {
+        LEFT, RIGHT
+    };
 
     /**
      * Constructor of {@link SideNavigationView}.
@@ -71,7 +76,21 @@ public class SideNavigationView extends LinearLayout {
      * Initialization layout of side menu.
      */
     private void initView() {
-        LayoutInflater.from(getContext()).inflate(R.layout.side_navigation, this, true);
+        removeAllViews();
+        int sideNavigationRes;
+        switch (mMode) {
+            case LEFT:
+                sideNavigationRes = R.layout.side_navigation_left;
+                break;
+            case RIGHT:
+                sideNavigationRes = R.layout.side_navigation_right;
+                break;
+
+            default:
+                sideNavigationRes = R.layout.side_navigation_left;
+                break;
+        }
+        LayoutInflater.from(getContext()).inflate(sideNavigationRes, this, true);
         navigationMenu = (LinearLayout) findViewById(R.id.side_navigation_menu);
         listView = (ListView) findViewById(R.id.side_navigation_listview);
         outsideView = (View) findViewById(R.id.side_navigation_outside_view);
@@ -114,6 +133,32 @@ public class SideNavigationView extends LinearLayout {
     }
 
     /**
+     * Setup sliding mode of side menu ({@code Mode.LEFT} or {@code Mode.RIGHT}). {@code Mode.LEFT} by default.
+     * 
+     * @param mode Sliding mode
+     */
+    public void setMode(Mode mode) {
+        if (isShown()) {
+            hideMenu();
+        }
+        mMode = mode;
+        initView();
+        // setup menu items
+        if (menuItems != null && menuItems.size() > 0) {
+            listView.setAdapter(new SideNavigationAdapter());
+        }
+    }
+
+    /**
+     * Getting current side menu mode ({@code Mode.LEFT} or {@code Mode.RIGHT}). {@code Mode.LEFT} by default.
+     * 
+     * @return side menu mode
+     */
+    public Mode getMode() {
+        return mMode;
+    }
+
+    /**
 	 * 
 	 */
     public void setBackgroundResource(int resource) {
@@ -125,11 +170,23 @@ public class SideNavigationView extends LinearLayout {
      */
     public void showMenu() {
         outsideView.setVisibility(View.VISIBLE);
-        outsideView.startAnimation(AnimationUtils.loadAnimation(getContext(),
-                R.anim.side_navigation_fade_in));
+        outsideView.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.side_navigation_fade_in));
+        // show navigation menu with animation
+        int animRes;
+        switch (mMode) {
+            case LEFT:
+                animRes = R.anim.side_navigation_in_from_left;
+                break;
+            case RIGHT:
+                animRes = R.anim.side_navigation_in_from_right;
+                break;
+
+            default:
+                animRes = R.anim.side_navigation_in_from_left;
+                break;
+        }
         navigationMenu.setVisibility(View.VISIBLE);
-        navigationMenu.startAnimation(AnimationUtils.loadAnimation(getContext(),
-                R.anim.side_navigation_in_from_left));
+        navigationMenu.startAnimation(AnimationUtils.loadAnimation(getContext(), animRes));
     }
 
     /**
@@ -137,11 +194,23 @@ public class SideNavigationView extends LinearLayout {
      */
     public void hideMenu() {
         outsideView.setVisibility(View.GONE);
-        outsideView.startAnimation(AnimationUtils.loadAnimation(getContext(),
-                R.anim.side_navigation_fade_out));
+        outsideView.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.side_navigation_fade_out));
+        // hide navigation menu with animation
+        int animRes;
+        switch (mMode) {
+            case LEFT:
+                animRes = R.anim.side_navigation_out_to_left;
+                break;
+            case RIGHT:
+                animRes = R.anim.side_navigation_out_to_right;
+                break;
+
+            default:
+                animRes = R.anim.side_navigation_out_to_left;
+                break;
+        }
         navigationMenu.setVisibility(View.GONE);
-        navigationMenu.startAnimation(AnimationUtils.loadAnimation(getContext(),
-                R.anim.side_navigation_out_to_left));
+        navigationMenu.startAnimation(AnimationUtils.loadAnimation(getContext(), animRes));
     }
 
     /**
@@ -253,7 +322,7 @@ public class SideNavigationView extends LinearLayout {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            
+
             SideNavigationItem item = menuItems.get(position);
             holder.text.setText(menuItems.get(position).getText());
             if (item.getIcon() != SideNavigationItem.DEFAULT_ICON_VALUE) {
