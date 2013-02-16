@@ -8,6 +8,12 @@ Version 1.3.0 *(In Development)*
  * ...
 
 
+Version 1.2.1 *(2013-02-16)*
+--------------------------------
+
+ * Fix: Library not support Android 2.1 and below
+
+
 Version 1.2.0 *(2013-01-23)*
 --------------------------------
 
